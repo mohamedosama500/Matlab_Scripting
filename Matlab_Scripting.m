@@ -42,6 +42,69 @@ disp(F);
  %In MATLAB, matrices are stored in column-major order. When you access N(6)[Sixth element starts from 1 indexing not 0,
  %it treats the matrix as a single column vector formed by stacking the columns of the matrix:
  N(6)
+ % vector of 100 evenly spaced points in the interval [-6,6].
+ y = linspace(-6,6)
+ %vector of 7 evenly spaced points in the interval [-6,6].
+ y1 = linspace(-6,6,7)
+ 
+ %numeric array B that is a sequence of 29 numbers starting with 0.5 and with a step of 0.25
+ 
+ B = 0.5:0.25: (0.5+(29-1)*0.25)
+  
+ %OR
+ 
+ B = linspace(0.5, (0.5+(29-1)*0.25), 29)
 
-
-
+ % generates a row vector y of 50 logarithmically spaced points between decades 10^-6 and 10^6.
+ y = logspace(-6,6)
+ % generates 7(n) points between decades 10^-6 and 10^6.
+ y1 = logspace(-6,6,7)
+ %generate square matrix of zeros 4*4
+ X1 = zeros(4)
+  
+ %Indexing using row-column subscripts
+ 
+ B = [2 6 9; 4 2 8; 3 5 1]
+ B(3,2)
+  
+ %Indexing using Linear indexing
+ 
+ B(6
+ B(:)
+ 
+ %Converting row-column subscripts to linear indexing and vice versa
+ 
+ linearindex = sub2ind( size(B), 3, 2)
+ 
+ [row col] = ind2sub(size(B), 6)
+ 
+ 
+ %Access multiple element in matrix
+  
+ B(1:3, 2) % row vector access
+ B(1:3:9) % (Uses linear indexing), where 3 is the step and 1,9 are start and end indexing
+ A(:, 2) % All elements on the second column
+ 
+ %One array as the index into another array
+ 
+ B = 5:5:50
+ C = [1 3 6 7 10]; 
+ B(C)% result will be according to numbers of C, 5 15 30 35 50
+ 
+ %end keyword act as last element in an array
+ 
+ B(1:3:end)
+ 
+ %Logicals in Array Indexing
+ B = [1 2 3; 4 5 6; 7 8 9] 
+ C = logical([0 1 0; 1 0 1; 0 0 1]); 
+ A(C)%Output will be one dimensional vector [4 2 6 9]
+ 
+ B(B>7)%Logical indexing also, result of B will be one dimensional vector [8 9]
+ 
+ % matrix having at least one dimension equal to zero is called an empty matrix
+ 
+ A = []; %Of size 0*0, class double
+ 
+ 
+  
