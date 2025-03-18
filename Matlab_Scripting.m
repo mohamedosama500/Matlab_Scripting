@@ -103,8 +103,36 @@ disp(F);
  B(B>7)%Logical indexing also, result of B will be one dimensional vector [8 9]
  
  % matrix having at least one dimension equal to zero is called an empty matrix
- 
  A = []; %Of size 0*0, class double
  
+ A([1,end], [1,end])
+ %A([1,end], [1,end]) selects rows 1 and end (which is 10 for a 10x10 matrix), and columns 1 and end. This returns the 4 corner elements:
+ %A(1,1) (top-left)
+ %A(1,end) (top-right)
+ %A(end,1) (bottom-left)
+ %A(end,end) (bottom-right)
+
+ C = magic(3); %creates a 3x3 magic square.
+ D = 2*ones(3,1); %creates a 3x1 column vector full of 2's.
+ C + D % Since D is 3x1, MATLAB will broadcast/expand D across the columns (auto-replication), Each row of C gets +2.
+ 
+ c = [10 20 30];
+ d = [1; 2; 3];
+ c * d
+ %c is 1x3, d is 3x1.
+ %c * d = dot product ? result is a scalar (1x1):
+ %= (10*1) + (20*2) + (30*3)
+ %= 10 + 40 + 90
+ %= 140
+ 
+ c .* d
+ 
+%c = [10 20 30] (1x3)
+%d = [1; 2; 3] (3x1)
+%? This will throw an error because c and d are not the same size (1x3 vs 3x1), and element-wise multiplication requires matching dimensions.
+ 
+ c .* d'
+ 
+%Now both c and d' are 1x3,  output now is [10*1, 20*2, 30*3]
  
   

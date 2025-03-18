@@ -100,7 +100,24 @@ disp(F);
  C = logical([0 1 0; 1 0 1; 0 0 1]); 
  A(C)%Output will be one dimensional vector [4 2 6 9]
  
- A(A>7)%Logical in
+ B(B>7)%Logical indexing also, result of B will be one dimensional vector [8 9]
+ 
+ % matrix having at least one dimension equal to zero is called an empty matrix
+ A = []; %Of size 0*0, class double
+ 
+ A([1,end], [1,end])
+ %A([1,end], [1,end]) selects rows 1 and end (which is 10 for a 10x10 matrix), and columns 1 and end. This returns the 4 corner elements:
+ %A(1,1) (top-left)
+ %A(1,end) (top-right)
+ %A(end,1) (bottom-left)
+ %A(end,end) (bottom-right)
+
+ C = magic(3); %creates a 3x3 magic square.
+ D = 2*ones(3,1); %creates a 3x1 column vector full of 2's.
+ C + D % Since D is 3x1, MATLAB will broadcast/expand D across the columns (auto-replication), Each row of C gets +2.
+ 
+ 
+ 
  
  
  
