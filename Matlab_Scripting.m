@@ -149,5 +149,27 @@ disp(F);
      %1-6   3-6   5-6
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
- 
+
+%Cell array:
+A = {'two', 'four', 'six';
+     2, 4, 6};
+%indexing with Smooth Parentheses, ()
+Data = A(1, 2)
+class(Data)%cell
+%indexing with curly braces, {}
+Data = A{1, 2}%char
+class(Data)
+%extract specific group of cells if each cell contains the same data type
+%[] is used for the concatenation process
+%A{2,:} extract the content of all elements in row 2
+nums = [A{2,:}]
+
+%Note: () in cells can be used to replace values inside cells through
+%indexing using () but with the same type of cells like that:
+
+A(1, 1:3) = {'eight', 'ten', 'nine'}
+
+%But indexing using {} retrieve actual data inside cells.
+A{1,1}= 'eight'
+
+

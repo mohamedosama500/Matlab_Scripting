@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Concatenation Methods
 
@@ -6,7 +6,7 @@ A = magic(3)
 B = ones (3,2)
 C = [A, B]
 D = [A; B']
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Preallocation
 
 tic
@@ -17,21 +17,21 @@ for k = 2: 1000000
 end
 
 toc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Access data in a cell array
 c = { 'one', 'two' 'three';1,2,3};
 Data = c(1,2)
 class(Data)
 c(1,1:3) = {'first','second','third'}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %numeric array F that is a sequence of 30 numbers starting with 0.5 and with a step of 0.25
 F = 0.5:0.25:0.5 + 0.25*(30-1);
 %OR
 F = linspace(0.5, 0.5 + 0.25*(30-1), 30);
 disp(F);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Matrix indexing:
  N = [2 4 9; 4 9 8; 3 7 1]
 %Acces using row-column subscripts:
@@ -42,6 +42,8 @@ disp(F);
  %In MATLAB, matrices are stored in column-major order. When you access N(6)[Sixth element starts from 1 indexing not 0,
  %it treats the matrix as a single column vector formed by stacking the columns of the matrix:
  N(6)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
  % vector of 100 evenly spaced points in the interval [-6,6].
  y = linspace(-6,6)
  %vector of 7 evenly spaced points in the interval [-6,6].
@@ -61,7 +63,8 @@ disp(F);
  y1 = logspace(-6,6,7)
  %generate square matrix of zeros 4*4
  X1 = zeros(4)
-  
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
  %Indexing using row-column subscripts
  
  B = [2 6 9; 4 2 8; 3 5 1]
@@ -94,6 +97,7 @@ disp(F);
  %end keyword act as last element in an array
  
  B(1:3:end)
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
  %Logicals in Array Indexing
  B = [1 2 3; 4 5 6; 7 8 9] 
@@ -111,14 +115,60 @@ disp(F);
  %A(1,end) (top-right)
  %A(end,1) (bottom-left)
  %A(end,end) (bottom-right)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
  C = magic(3); %creates a 3x3 magic square.
  D = 2*ones(3,1); %creates a 3x1 column vector full of 2's.
  C + D % Since D is 3x1, MATLAB will broadcast/expand D across the columns (auto-replication), Each row of C gets +2.
  
+ c = [10 20 30];
+ d = [1; 2; 3];
+ c * d
+ %c is 1x3, d is 3x1.
+ %c * d = dot product ? result is a scalar (1x1):
+ %= (10*1) + (20*2) + (30*3)
+ %= 10 + 40 + 90
+ %= 140
  
+ c .* d
  
+%c = [10 20 30] (1x3)
+%d = [1; 2; 3] (3x1)
+%? This will throw an error because c and d are not the same size (1x3 vs 3x1), and element-wise multiplication requires matching dimensions.
  
+ c .* d'
  
+%Now both c and d' are 1x3,  output now is [10*1, 20*2, 30*3]
  
-  
+ c -d
+ 
+%Since a is 1x3 and b is 3x1, MATLAB will automatically expand both vectors into a 3x3 matrix (due to implicit expansion aka broadcasting).
+%a - b =
+     %1-2   3-2   5-2
+     %1-4   3-4   5-4
+     %1-6   3-6   5-6
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Cell array:
+A = {'two', 'four', 'six';
+     2, 4, 6};
+%indexing with Smooth Parentheses, ()
+Data = A(1, 2)
+class(Data)%cell
+%indexing with curly braces, {}
+Data = A{1, 2}%char
+class(Data)
+%extract specific group of cells if each cell contains the same data type
+%[] is used for the concatenation process
+%A{2,:} extract the content of all elements in row 2
+nums = [A{2,:}]
+
+%Note: () in cells can be used to replace values inside cells through
+%indexing but with tha same type of cells like that:
+
+A(1, 1:3) = {'eight', 'ten', 'nine'}
+
+%But 
+
+
