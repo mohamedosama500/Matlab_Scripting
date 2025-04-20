@@ -169,7 +169,43 @@ nums = [A{2,:}]
 
 A(1, 1:3) = {'eight', 'ten', 'nine'}
 
-%But indexing using {} retrieve actual data inside cells.
+%But indexing using {} retrieve actual data inside cell or content
+%assignment not for removing element
 A{1,1}= 'eight'
+
+% To remove last cell of a cell-array A
+
+A(end) = [];
+
+% because each cell contain a different type of data, you cannot assign
+% this list to a single variable, Ex:
+% This line extracts multiple elements from a cell array MyCell and assigns each one to a separate variable.
+
+[MyVar1, MyVar2, MyVar3, MyVar4] = MyCell{1:2,1:2}
+% Example:
+MyCell = {
+    'Alice', 123;
+    [1,2,3], true
+};
+
+[MyVar1, MyVar2, MyVar3, MyVar4] = MyCell{1:2,1:2}
+
+MyVar1 = 'Alice'      % from MyCell{1,1}
+MyVar2 = 123          % from MyCell{1,2}
+MyVar3 = [1,2,3]      % from MyCell{2,1}
+MyVar4 = true         % from MyCell{2,2}
+
+%//////////////////////////////////////////////////////////////////////////////////////////////////////
+% If each cell contains the same type of data, you can create a single variable by applying the 
+% array concatenation operator, [], to the comma-separated list, Ex:
+% A is a cell array.
+
+% A{2,:} extracts the contents (not cells) of all elements in row 2 (all columns).
+
+% The {} curly braces mean we are retrieving the actual data inside the cells.
+
+ nums = [A{2,:}]
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

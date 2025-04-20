@@ -165,10 +165,23 @@ class(Data)
 nums = [A{2,:}]
 
 %Note: () in cells can be used to replace values inside cells through
-%indexing but with tha same type of cells like that:
+%indexing using () but with the same type of cells like that:
 
 A(1, 1:3) = {'eight', 'ten', 'nine'}
 
-%But 
+%But indexing using {} retrieve actual data inside cell or content
+%assignment not for removing element
+A{1,1}= 'eight'
+
+% To remove last cell of a cell-array A
+
+C(end) = [];
+
+% because each cell contain a different type of data, you cannot assign
+% this list to a single variable, Ex:
+
+[MyVar1, MyVar2, MyVar3, MyVar4] = MyCell{1:2,1:2}
+
+%
 
 
