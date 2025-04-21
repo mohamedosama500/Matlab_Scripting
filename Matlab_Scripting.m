@@ -208,4 +208,39 @@ MyVar4 = true         % from MyCell{2,2}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Structure array:
 
+% Using operator:
+ Project.Name = 'D2000'
+ Project.Cost = 766
+ Project.Resources = [2 4 7]
+ 
+% To add nother record:
+
+ Project(2).Name = 'R2000'
+ Project(2).Cost = 897
+ Project(2).Resources = [5 94 37]
+ 
+% Using Function:
+% You're creating a 25×50 structure array called Project, and filling every element of that array with the same struct, which has:
+
+% Field 'a' ? a 20×20 matrix of ones
+
+% Field 'b' ? a 30×30 matrix of zeros
+
+% Field 'c' ? a 40×40 matrix of random values
+
+% Project(i,j).a  % 20x20 matrix of ones
+% Project(i,j).b  % 30x30 matrix of zeros
+% Project(i,j).c  % 40x40 matrix of random numbers
+% you’re generating 25 × 50 = 1250 structs, and each has:
+
+% 400 numbers for .a
+
+% 900 numbers for .b
+
+% 1600 numbers for .c
+
+ Project(1:25,1:50) = struct('a',ones(20),'b',zeros(30),'c',rand(40));
+
+ 
